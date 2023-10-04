@@ -3,7 +3,8 @@ from __future__ import absolute_import, unicode_literals
 import os
 import pkgutil
 
-_replaces = pkgutil.get_data(__name__, 'data.bin').decode('utf8').split('\x00')
+with open(os.path.join(os.path.dirname(__file__), 'data.bin'), 'rb') as f:
+    _replaces = f.read().decode('utf8').split('\x00')
 
 def unidecode(txt):
     chars = []
